@@ -12,7 +12,15 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+const corsOptions = {
+  origin: "https://shiny-cupcake-2d6516.netlify.app/",
+  // origin : "http://localhost:5173",
+  methods: ["GET", "PUT", "DELETE", "POST", "PATCH"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+  optionsSuccessStatus: 204,
+};
+app.use(cors(corsOptions));
 app.use(bodyparser.json());
 const port = 3000;
 
