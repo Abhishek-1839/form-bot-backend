@@ -21,7 +21,9 @@ const port = 3000;
 mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true})
 .then(()=>{console.log("mongodb connected")})
 .catch((error)=>{console.log(`error connecting ${error}`)});
-
+app.get("/healthCheck", (req, res) => {
+  res.send("Working properly");
+});
 app.use("/user", userRoutes);
 app.use('/api/workspaces', userMiddleware , workspaceRoutes);
 app.use('/forms', userMiddleware, formRoutes );
