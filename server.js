@@ -9,18 +9,20 @@ const userMiddleware = require('./middleware/userMiddleware');
 const cors = require("cors");
 dotenv.config();
 
-
 const app = express();
-app.use(express.json());
-const corsOptions = {
-  origin: "https://statuesque-moonbeam-16e2cc.netlify.app",
-  // origin : "http://localhost:5173",
-  methods: ["GET", "PUT", "DELETE", "POST", "PATCH"],
-  allowedHeaders: ["Content-Type", "Authorization"],
+app.use(cors({
+  origin: [
+    'http://localhost:3000', 
+    'https://statuesque-moonbeam-16e2cc.netlify.app',
+    'https://form-bot-backend-tau.vercel.app'  // Add your Vercel backend URL
+  ],
   credentials: true,
-  optionsSuccessStatus: 204,
-};
-app.use(cors(corsOptions));
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
+app.use(express.json());
+
 app.use(bodyparser.json());
 const port = 3000;
 
