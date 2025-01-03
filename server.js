@@ -13,7 +13,7 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 const corsOptions = {
-  origin: "https://shiny-cupcake-2d6516.netlify.app",
+  origin: "https://stirring-mooncake-5e5013.netlify.app",
   // origin : "http://localhost:5173",
   methods: ["GET", "PUT", "DELETE", "POST", "PATCH"],
   allowedHeaders: ["Content-Type", "Authorization"],
